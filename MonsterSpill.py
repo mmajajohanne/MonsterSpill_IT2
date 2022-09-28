@@ -5,11 +5,10 @@ import random
 navn = ""
 
 class Spiller:
-    def __init__(self, navn, hp, angrepsstyrke, mat):
+    def __init__(self, navn, hp, angrepsstyrke):
         self.navn = navn
         self.hp = hp
         self.angrepsstyrke = angrepsstyrke
-        self.mat = mat
     
     def hit(self, styrke):
         self.hp -= styrke
