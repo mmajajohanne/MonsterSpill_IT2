@@ -23,14 +23,15 @@ class Monster:
 
 navn = input("Hva heter du? ")
 
-spiller = Spiller(navn, 500, 50, 0)
-monster = Monster(50, 500)
+spiller = Spiller(navn, 500, 50)
+monster = Monster(70, 500)
 
 print("Nå heter du", spiller.navn, ":)")
 
 print("Velg en path i livet ditt:")
 print("Gå bort til det vakre frukttreet skriv:0")
 print("Gå bort til den mørke dype hulen skriv:1")
+print("Gå bort til en gammel og forfallen kiste skriv:2")
 valg1 = input("Ta valget ditt: ")
 
 if valg1 == "0":
@@ -42,11 +43,21 @@ if valg1 == "0":
     elif valg2 == "nei" or "Nei":
         print("Du går uten å spise et eple.")
 
-    print("Nå bestemmer du deg for å gå inn i hulen.")
+    
+    valg1 = "1"
+
+if valg1 == "2":
+    print("Kisten er vrien å åpne men du får omsider det til")
+    print("Inni ligger det et sverd og en øks")
+    valgVaapen = input("Hvilket våpen plukker du opp? Skriv '1' for øks og skriv '2' for sverd")
+    if valgVaapen == "1":
+        spiller.angrepsstyrke += 20
+    else:
+        spiller.angrepsstyrke += 21
     valg1 = "1"
 
 if valg1 == "1":
-    print("Du går inn i hulen")
+    print("Nå bestemmer du deg for å gå inn i hulen.")
     valg3 = input("Vil du se stats før hulen? (ja)/(nei)")
     if valg3.lower() == "ja":
         print(f"Dette er hp: {spiller.hp}","\n",f"Dette er angrepsstyrken: {spiller.angrepsstyrke}")
@@ -68,10 +79,12 @@ else:
 
 if spiller.hp == 0:
     print("Du døde!")
-else:
+elif spiller.hp != 0 and monster.hp != 0:
     print(f"Du angriper skorpionen tilbake med angrepsstyrke: {spiller.angrepsstyrke}")
     monster.angrep(spiller.angrepsstyrke)
-    
+    if monster.hp != 0:
+        print(f"Du angriper skorpionen før den rekker å reagere igjen med angrepsstyrken {spiller.angrepsstyrke}")
+        monster.angrep(spiller.angrepsstyrke)
+
 if monster.hp == 0:
     print("Du drepte monsteret!")
-
