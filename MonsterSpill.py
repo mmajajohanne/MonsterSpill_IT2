@@ -88,3 +88,5 @@ elif spiller.hp != 0 and monster.hp != 0:
 
 if monster.hp == 0:
     print("Du drepte monsteret!")
+
+#Hei:)
